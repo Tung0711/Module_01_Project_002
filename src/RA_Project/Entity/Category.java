@@ -100,7 +100,7 @@ public class Category implements ICategory, Serializable {
                 if ((name.length() >= 6) && (name.length() < 30)) {
                     boolean isExist = false;
                     for (int i = 0; i < lsCatalog.size(); i++) {
-                        if (lsCatalog.get(0).getName().equalsIgnoreCase(name)) {
+                        if (lsCatalog.get(i).getName().equalsIgnoreCase(name)) {
                             isExist = true;
                             break;
                         }

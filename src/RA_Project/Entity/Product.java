@@ -139,7 +139,7 @@ public class Product implements IProduct, Serializable {
                     if (productId.charAt(0) == 'P') {
                         boolean isExit = false;
                         for (int i = 0; i < lsPro.size(); i++) {
-                            if (lsPro.get(0).getId().equals(productId)) {
+                            if (lsPro.get(i).getId().equals(productId)) {
                                 isExit = true;
                                 break;
                             }
@@ -169,7 +169,7 @@ public class Product implements IProduct, Serializable {
                 if ((productName.length() >= 6) && (productName.length() < 30)) {
                     boolean isExist = false;
                     for (int i = 0; i < lsPro.size(); i++) {
-                        if (lsPro.get(0).getName().equalsIgnoreCase(productName)) {
+                        if (lsPro.get(i).getName().equalsIgnoreCase(productName)) {
                             isExist = true;
                             break;
                         }
