@@ -109,10 +109,14 @@ public class CatalogImp {
         System.out.println("Nhập vào tên danh mục cần tìm: ");
         try {
             String findCatalogName = scanner.nextLine();
-            formatPrintCatalog();
-            lsCatalog.stream().filter(category -> category.getName().equalsIgnoreCase(findCatalogName)).forEach(System.out::println);
+            boolean isFindCatalog = lsCatalog.stream().anyMatch(category -> category.getName().equalsIgnoreCase(findCatalogName));
+            if (!isFindCatalog) {
+                System.err.println("Danh mục không tồn tại");
+            } else {
+                formatPrintCatalog();
+                lsCatalog.stream().filter(category -> category.getName().equalsIgnoreCase(findCatalogName)).forEach(System.out::println);
+            }
         } catch (Exception ex) {
-            System.err.println("Danh mục không tồn tại!");
             ex.printStackTrace();
         }
     }
