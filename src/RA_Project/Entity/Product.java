@@ -104,19 +104,20 @@ public class Product implements IProduct, Serializable {
         this.importPrice = inputImportPrice(scanner);
         this.exportPrice = inputExportPrice(scanner);
         this.description = inputDescription(scanner);
+        calProfit();
         this.status = inputStatus(scanner);
         this.categoryId = inputCatalogId(scanner);
     }
 
-    public double calProfit() {
+    public void calProfit() {
         profit = exportPrice - importPrice;
-        return profit;
+
     }
 
     @Override
     public void displayData() {
         System.out.printf("| %12s | %17s |   %.1f |  %.1f |    %.1f | %24s | %19s | %23s |\n", this.id, this.name, this.importPrice, this.exportPrice,
-                calProfit(), this.description, this.status ? "Còn hàng" : "Ngừng kinh doanh", displayCatalogNameById(categoryId));
+                this.profit, this.description, this.status ? "Còn hàng" : "Ngừng kinh doanh", displayCatalogNameById(categoryId));
         System.out.println("----------------------------------------------------------------------------------------------" +
                 "--------------------------------------------------");
     }
@@ -127,7 +128,7 @@ public class Product implements IProduct, Serializable {
                         "----------------------------------------------------------------------------------------------" +
                         "--------------------------------------------------",
                 this.id, this.name, this.importPrice, this.exportPrice,
-                calProfit(), this.description, this.status ? "Còn hàng" : "Ngừng kinh doanh", displayCatalogNameById(categoryId));
+                this.profit, this.description, this.status ? "Còn hàng" : "Ngừng kinh doanh", displayCatalogNameById(categoryId));
     }
 
     public String inputProId(Scanner scanner) {

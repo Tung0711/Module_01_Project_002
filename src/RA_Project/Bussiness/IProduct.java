@@ -9,5 +9,5 @@ public interface IProduct {
 
     void displayData();
 
-    double calProfit();
+    void calProfit();
 }

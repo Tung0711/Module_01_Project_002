@@ -99,7 +99,7 @@ public class ProductImp {
         System.out.println("Sắp xếp sản phẩm theo lợi nhuận giảm dần");
         try {
             formatPrintPro();
-            lsPro.stream().sorted(Comparator.comparing(Product::calProfit).reversed()).forEach(System.out::println);
+            lsPro.stream().sorted(Comparator.comparing(Product::getProfit).reversed()).forEach(System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
         }
