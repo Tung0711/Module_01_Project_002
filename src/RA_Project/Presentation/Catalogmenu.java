@@ -45,10 +45,12 @@ public class Catalogmenu {
                 case 2:
                     ctl.updateCatalogById(scanner);
                     ctl.writeDataCatalogToFile();
+                    ctl.displayDataCatalog();
                     break;
                 case 3:
                     ctl.deleteCatalogById(scanner);
                     ctl.writeDataCatalogToFile();
+                    ctl.displayDataCatalog();
                     break;
                 case 4:
                     ctl.findCatalog(scanner);

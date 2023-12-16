@@ -46,10 +46,12 @@ public class ProductMenu {
                 case 2:
                     pro.updateProById(scanner);
                     pro.writeDataProductToFile();
+                    pro.displayDataProduct();
                     break;
                 case 3:
                     pro.deletePro(scanner);
                     pro.writeDataProductToFile();
+                    pro.displayDataProduct();
                     break;
                 case 4:
                     pro.sortProbyName();

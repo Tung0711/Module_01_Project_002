@@ -166,7 +166,7 @@ public class Product implements IProduct, Serializable {
         System.out.println("Nhập vào tên sản phẩm: ");
         do {
             try {
-                String productName = scanner.nextLine();
+                String productName = scanner.nextLine().trim();
                 if ((productName.length() >= 6) && (productName.length() < 30)) {
                     boolean isExist = false;
                     for (int i = 0; i < lsPro.size(); i++) {
@@ -229,7 +229,7 @@ public class Product implements IProduct, Serializable {
         System.out.println("Nhập vào mô tả sản phẩm: ");
         do {
             try {
-                String description = scanner.nextLine();
+                String description = scanner.nextLine().trim();
                 if (description != null) {
                     return description;
                 } else {
@@ -261,14 +261,19 @@ public class Product implements IProduct, Serializable {
         System.out.println("Chọn danh mục của sản phẩm: ");
         do {
             for (int i = 0; i < lsCatalog.size(); i++) {
-                System.out.printf("%d.%s\n", i + 1, lsCatalog.get(i).getName());
+                boolean isxStatus = false;
+                if (!lsCatalog.get(i).isStatus() == isxStatus) {
+                    System.out.printf("%d.%s\n", i + 1, lsCatalog.get(i).getName());
+                } else {
+                    System.err.println("Danh mục của sản phẩm không khả dụng!");
+                }
             }
             System.out.println("Lựa chọn của bạn: ");
             try {
                 int choice = Integer.parseInt(scanner.nextLine());
                 return lsCatalog.get(choice - 1).getId();
             } catch (NumberFormatException ex) {
-                ex.printStackTrace();
+                System.err.println("Danh mục không tồn tại!");
             }
         } while (true);
     }

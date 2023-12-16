@@ -109,12 +109,12 @@ public class ProductImp {
         System.out.println("Nhập vào tên sản phẩm: ");
         try {
             String findProductName = scanner.nextLine();
-            boolean isFindPro = lsPro.stream().anyMatch(product -> product.getName().equalsIgnoreCase(findProductName));
+            boolean isFindPro = lsPro.stream().anyMatch(product -> product.getName().contains(findProductName));
             if (!isFindPro) {
                 System.err.println("Sản phẩm không tồn tại!");
             } else {
                 formatPrintPro();
-                lsPro.stream().filter(product -> product.getName().equalsIgnoreCase(findProductName)).forEach(System.out::println);
+                lsPro.stream().filter(product -> product.getName().contains(findProductName)).forEach(System.out::println);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

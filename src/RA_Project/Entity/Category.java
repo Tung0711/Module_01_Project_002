@@ -96,7 +96,7 @@ public class Category implements ICategory, Serializable {
         System.out.println("Nhập vào tên danh mục: ");
         do {
             try {
-                String name = scanner.nextLine();
+                String name = scanner.nextLine().trim();
                 if ((name.length() >= 6) && (name.length() < 30)) {
                     boolean isExist = false;
                     for (int i = 0; i < lsCatalog.size(); i++) {
@@ -123,7 +123,7 @@ public class Category implements ICategory, Serializable {
         System.out.println("Nhập vào mô tả danh mục: ");
         do {
             try {
-                String description = scanner.nextLine();
+                String description = scanner.nextLine().trim();
                 if (description != null) {
                     return description;
                 } else {
