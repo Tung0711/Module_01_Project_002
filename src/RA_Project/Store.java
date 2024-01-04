@@ -1,13 +1,23 @@
 package RA_Project;
 
+import RA_Project.BussinessImp.CatalogImp;
+import RA_Project.BussinessImp.ProductImp;
 import RA_Project.Presentation.Catalogmenu;
 import RA_Project.Presentation.ProductMenu;
-
+import static RA_Project.Presentation.ProductMenu.lsPro;
+import static RA_Project.Presentation.Catalogmenu.lsCatalog;
 import java.util.Scanner;
 
 public class Store {
 
     public static void main(String[] args) {
+        try {
+            lsPro = ProductImp.readDataProductFromFile();
+            lsCatalog = CatalogImp.readDataCatalogFromFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Scanner scanner = new Scanner(System.in);
         Catalogmenu ctl = new Catalogmenu();
         ProductMenu prm = new ProductMenu();

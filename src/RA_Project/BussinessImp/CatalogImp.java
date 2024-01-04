@@ -3,7 +3,6 @@ package RA_Project.BussinessImp;
 import RA_Project.Entity.Category;
 import RA_Project.Entity.Product;
 import RA_Project.Presentation.ProductMenu;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,15 +106,17 @@ public class CatalogImp {
     }
 
     public void findCatalog(Scanner scanner) {
-        System.out.println("Nhập vào tên danh mục cần tìm: ");
+        System.out.println("Nhập vào từ khóa cần tìm: ");
         try {
-            String findCatalogName = scanner.nextLine();
-            boolean isFindCatalog = lsCatalog.stream().anyMatch(category -> category.getName().contains(findCatalogName));
-            if (!isFindCatalog) {
+            String findCatalog = scanner.nextLine();
+            boolean isFindCatalog = lsCatalog.stream().anyMatch(category -> category.getName().contains(findCatalog));
+            boolean isFind = lsCatalog.stream().anyMatch(category -> category.getDescription().contains(findCatalog));
+            if (!isFindCatalog && !isFind) {
                 System.err.println("Danh mục không tồn tại");
             } else {
                 formatPrintCatalog();
-                lsCatalog.stream().filter(category -> category.getName().contains(findCatalogName)).forEach(System.out::println);
+                lsCatalog.stream().filter(category -> category.getName().contains(findCatalog)).forEach(System.out::println);
+                lsCatalog.stream().filter(category -> category.getDescription().contains(findCatalog)).forEach(System.out::println);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -127,8 +128,6 @@ public class CatalogImp {
             for (Category ctl : lsCatalog) {
                 long countCatalog = lsPro.stream().filter(product -> product.getCategoryId() == ctl.getId()).count();
                 System.out.printf("%s có chứa %d sản phẩm\n", ctl.getName(), countCatalog);
-                ProductImp.formatPrintPro();
-                lsPro.stream().filter(product -> product.getCategoryId() == ctl.getId()).forEach(System.out::println);
             }
 
         } catch (Exception e) {

@@ -1,10 +1,8 @@
 package RA_Project.Entity;
 
 import RA_Project.Bussiness.ICategory;
-
 import java.io.Serializable;
 import java.util.Scanner;
-
 import static RA_Project.Presentation.Catalogmenu.lsCatalog;
 
 public class Category implements ICategory, Serializable {

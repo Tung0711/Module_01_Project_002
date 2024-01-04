@@ -2,7 +2,6 @@ package RA_Project.Presentation;
 
 import RA_Project.BussinessImp.CatalogImp;
 import RA_Project.Entity.Category;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,11 +11,6 @@ public class Catalogmenu {
     public static List<Category> lsCatalog = new ArrayList<>();
 
     public void displayCatalogMenu(Scanner scanner) {
-        try {
-            lsCatalog = CatalogImp.readDataCatalogFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         boolean isExit = true;
         do {
             System.out.println("************ QUẢN LÝ DANH MỤC ************");

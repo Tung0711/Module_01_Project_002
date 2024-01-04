@@ -1,10 +1,8 @@
 package RA_Project.BussinessImp;
 
 import RA_Project.Entity.Product;
-
 import java.io.*;
 import java.util.*;
-
 import static RA_Project.Presentation.ProductMenu.lsPro;
 
 public class ProductImp {
@@ -106,15 +104,17 @@ public class ProductImp {
     }
 
     public void findPro(Scanner scanner) {
-        System.out.println("Nhập vào tên sản phẩm: ");
+        System.out.println("Nhập vào từ khóa cần tìm kiếm: ");
         try {
-            String findProductName = scanner.nextLine();
-            boolean isFindPro = lsPro.stream().anyMatch(product -> product.getName().contains(findProductName));
-            if (!isFindPro) {
+            String findProduct = scanner.nextLine();
+            boolean isFindPro = lsPro.stream().anyMatch(product -> product.getName().contains(findProduct));
+            boolean isFind = lsPro.stream().anyMatch(product -> product.getDescription().contains(findProduct));
+            if (!isFindPro && !isFind) {
                 System.err.println("Sản phẩm không tồn tại!");
             } else {
                 formatPrintPro();
-                lsPro.stream().filter(product -> product.getName().contains(findProductName)).forEach(System.out::println);
+                lsPro.stream().filter(product -> product.getName().contains(findProduct)).forEach(System.out::println);
+                lsPro.stream().filter(product -> product.getDescription().contains(findProduct)).forEach(System.out::println);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

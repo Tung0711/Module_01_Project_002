@@ -1,10 +1,8 @@
 package RA_Project.Entity;
 
 import RA_Project.Bussiness.IProduct;
-
 import java.io.Serializable;
 import java.util.Scanner;
-
 import static RA_Project.Presentation.Catalogmenu.lsCatalog;
 import static RA_Project.Presentation.ProductMenu.lsPro;
 
@@ -260,16 +258,14 @@ public class Product implements IProduct, Serializable {
     public int inputCatalogId(Scanner scanner) {
         System.out.println("Chọn danh mục của sản phẩm: ");
         do {
-            for (int i = 0; i < lsCatalog.size(); i++) {
-                boolean isxStatus = false;
-                if (!lsCatalog.get(i).isStatus() == isxStatus) {
-                    System.out.printf("%d.%s\n", i + 1, lsCatalog.get(i).getName());
-                } else {
-                    System.err.println("Danh mục của sản phẩm không khả dụng!");
-                }
-            }
-            System.out.println("Lựa chọn của bạn: ");
             try {
+                for (int i = 0; i < lsCatalog.size(); i++) {
+                    boolean isCheckStatus = false;
+                    if (!lsCatalog.get(i).isStatus() == isCheckStatus) {
+                        System.out.printf("%d.%s\n", i + 1, lsCatalog.get(i).getName());
+                    }
+                }
+                System.out.println("Lựa chọn của bạn: ");
                 int choice = Integer.parseInt(scanner.nextLine());
                 return lsCatalog.get(choice - 1).getId();
             } catch (NumberFormatException ex) {

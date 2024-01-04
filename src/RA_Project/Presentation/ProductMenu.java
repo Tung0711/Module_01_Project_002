@@ -2,7 +2,6 @@ package RA_Project.Presentation;
 
 import RA_Project.BussinessImp.ProductImp;
 import RA_Project.Entity.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,11 +11,6 @@ public class ProductMenu {
     public static List<Product> lsPro = new ArrayList<>();
 
     public void displayProductMenu(Scanner scanner) {
-        try {
-            lsPro = ProductImp.readDataProductFromFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         boolean isExit = true;
         do {
             System.out.println("************ QUẢN LÝ SẢN PHẨM ************");
